@@ -1,1 +1,59 @@
-theme: jekyll-theme-minimal
+# # # # # # # #
+#   K i k o   #
+# # # # # # # #
+
+# Basic
+name:               "LIANGBIN"
+title:              "Liangbin's homepage"
+description:        "Liangbin's homepage"
+
+
+# URL
+url:                https://LiangbinXie.github.io/
+baseurl:
+#baseurl:            "" #For Root Domain
+permalink:          /:year/:month/:day/:title.html
+
+# Markdown
+markdown:           kramdown
+
+# Highlighter
+highlighter:        rouge
+
+# Navigation
+nav:
+  - name:           "HOME"
+    href:           "/"
+  - name:           "PUBLICATION"
+    href:           "#publication"
+
+# Sass
+sass:
+  style:            :compressed
+
+# Scopes
+defaults:
+  -
+    scope:
+      path:         ""
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      path:         ""
+      type:         "posts"
+    values:
+      layout:       "post"
+  -
+    scope:
+      path:         ""
+      type:         "people"
+    values:
+      layout:       "profile"
+
+
+collections:
+  people:
+    output: true
+    permalink: /people/:title/index.html
