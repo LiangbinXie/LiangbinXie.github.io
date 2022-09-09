@@ -1,0 +1,6 @@
+@InProceedings{liu2020enhanced,
+author = {Yihao Liu and Liangbin Xie and Li Siyao and Wenxiu Sun and Yu Qiao and Chao Dong},
+title = {Enhanced quadratic video interpolation},
+booktitle = {European Conference on Computer Vision Workshops},
+year = {2020},
+}

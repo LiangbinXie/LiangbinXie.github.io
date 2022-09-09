@@ -1,0 +1,12 @@
+@inproceedings{NEURIPS2021_008bd5ad,
+ author = {Xie, Liangbin and Wang, Xintao and Dong, Chao and Qi, Zhongang and Shan, Ying},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {M. Ranzato and A. Beygelzimer and Y. Dauphin and P.S. Liang and J. Wortman Vaughan},
+ pages = {51--61},
+ publisher = {Curran Associates, Inc.},
+ title = {Finding Discriminative Filters for Specific Degradations in Blind Super-Resolution},
+ url = {https://proceedings.neurips.cc/paper/2021/file/008bd5ad93b754d500338c253d9c1770-Paper.pdf},
+ volume = {34},
+ year = {2021}
+}
+
