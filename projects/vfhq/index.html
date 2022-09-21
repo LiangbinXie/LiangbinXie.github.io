@@ -37,6 +37,18 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
+  <style>
+    #pic_list {
+      display: block;
+      white-space: nowrap;
+      overflow: auto;
+    }
+
+    #pic_list li {
+      display: inline-block;
+    }
+  </style>
 </head>
 
 <body>
@@ -179,9 +191,10 @@
       <div class="hero-body">
         <div class="figure">
           <video id="replay-video" controls muted preload autoplay loop width="100%">
-            <source src="./static/images/teasor_mask.mp4" type="video/mp4">
+            <source src="./static/images/teaser.mp4" type="video/mp4">
           </video>
           <!-- <img class="Sirv image-main" src="static/img/teaser.png" data-src="static/img/teaser.png"> -->
+          <img class="Sirv image-hover" data-src="./static/images/mask.png">
         </div>
 
         </a>
