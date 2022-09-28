@@ -1,0 +1,6 @@
+@article{shi2022rethinking,
+  title={Rethinking Alignment in Video Super-Resolution Transformers},
+  author={Shi, Shuwei and Gu, Jinjin and Xie, Liangbin and Wang, Xintao and Yang, Yujiu and Dong, Chao},
+  journal={arXiv preprint arXiv:2207.08494},
+  year={2022}
+}
