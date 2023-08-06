@@ -1,0 +1,5 @@
+@article{xie2023desra,
+    title={DeSRA: Detect and Delete the Artifacts of GAN-based Real-World Super-Resolution Models},
+    author={Xie, Liangbin and Wang, Xintao and Chen, Xiangyu and Li, Gen and Shan, Ying and Zhou, Jiantao and Dong, Chao},
+    year={2023}
+}
