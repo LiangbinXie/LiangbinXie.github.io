@@ -1,6 +1,6 @@
-@article{ruiz2022dreambooth,
-  title={DreamBooth: Fine Tuning Text-to-image Diffusion Models for Subject-Driven Generation},
-  author={Ruiz, Nataniel and Li, Yuanzhen and Jampani, Varun and Pritch, Yael and Rubinstein, Michael and Aberman, Kfir},
-  booktitle={arXiv preprint arxiv:2208.12242},
-  year={2022}
+@article{xie2025turbofill,
+  title={TurboFill: Adapting Few-step Text-to-image Model for Fast Image Inpainting},
+  author={Xie, Liangbin and Pakhomov, Daniil and Wang, Zhonghao and Wu, Zongze and Chen, Ziyan <br>&nbsp;&nbsp; and Zhou, Yuqian and Zheng, Haitian and Zhang, Zhifei and Lin, Zhe and Zhou, Jiantao and Dong, Chao},
+  booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2025}
 }
