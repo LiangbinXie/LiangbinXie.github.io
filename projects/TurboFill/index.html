@@ -1,0 +1,156 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>DreamBooth</title>
+  <link href="./files/style.css" rel="stylesheet">
+  <script type="text/javascript" src="./files/jquery.mlens-1.0.min.js"></script>
+  <script type="text/javascript" src="./files/jquery.js"></script>
+</head>
+
+<body>
+  <div class="content">
+    <h1><strong>TurboFill: Adapting Few-step Text-to-image Model <br> for Fast Image Inpainting</strong></h1>
+    <p id="authors"><span><a href="https://liangbinxie.github.io/"></a></span><a
+        href="https://liangbinxie.github.io/">Liangbin Xie<sup>1,2</sup></a></span> <a
+        href="https://scholar.google.com/citations?user=UI10l34AAAAJ&hl=en">Daniil
+        Pakhomov<sup>3</sup></a> <a href="https://scholar.google.com/citations?user=opL6CL8AAAAJ&hl=en">Zhonghao
+        Wang<sup>3</sup></a> <a href="https://scholar.google.com/citations?user=V8FwQGkAAAAJ&hl=en">Zongze
+        Wu<sup>3</sup></a> <a href="https://github.com/ziyannchen">Ziyan
+        Chen<sup>2</sup></a> <br> <a href="https://scholar.google.com.hk/citations?user=QG2AkuYAAAAJ&hl=zh-CN">Yuqian
+        Zhou<sup>3</sup></a> <a href="https://scholar.google.com/citations?user=hLG8AmwAAAAJ&hl=en">Haitian
+        Zheng<sup>3</sup></a> <a href="https://scholar.google.com/citations?user=HuerflQAAAAJ&hl=en">Zhifei
+        Zhang<sup>3</sup></a>
+      <a href="https://scholar.google.com/citations?user=R0bnqaAAAAAJ&hl=en">Zhe Lin<sup>3</sup></a> <a
+        href="https://scholar.google.com.hk/citations?user=mcROAxAAAAAJ&hl=zh-CN">Jiantao Zhou<sup>1</sup></a> <a
+        href="https://scholar.google.com.hk/citations?user=OSDCB0UAAAAJ&hl=zh-CN">Chao
+        Dong<sup>2</sup></a><br>
+      <br>
+      <span style="font-size: 24px"><sup>1</sup>University of Macau &nbsp; &nbsp; <sup>2</sup>Shenzhen
+        Institutes of Advanced Technology &nbsp; &nbsp; <sup>3</sup>Adobe Research
+      </span>
+    </p>
+    <br>
+    <img src="./files/teasor.jpg" class="teaser-gif" style="width:100%;">
+    <h3 style="text-align:center"><em>With only four diffusion steps, TurboFill outperforms the multi-step BrushNet*,
+        <br>
+        delivering realistic details and
+        textures with remarkable efficiency.</em></h3>
+    <font size="+2">
+      <p style="text-align: center;">
+        <a href="https://arxiv.org/abs/2208.12242" target="_blank">[Paper]</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="files/bibtex.txt" target="_blank">[BibTeX]</a>
+      </p>
+    </font>
+  </div>
+  <div class="content">
+    <h2 style="text-align:center;">Abstract</h2>
+    <p>This paper introduces TurboFill, a fast image inpaint- ing model that enhances a few-step text-to-image diffusion
+      model
+      with an inpainting adapter for high-quality and efficient inpainting. While standard diffusion models generate
+      high-quality results, they incur high computational costs. We overcome this by training an inpainting adapter on a
+      few-step distilled text-to-image model, DMD2, using a novel 3-step adversarial training scheme to ensure
+      realistic,
+      structurally consistent, and visually harmonious inpainted regions. To evaluate TurboFill, we propose two bench-
+      marks:
+      DilationBench, which tests performance across mask sizes, and HumanBench, based on human feedback for complex
+      prompts.
+      Experiments show that TurboFill outperforms both multi-step BrushNet and few-step inpainting methods, setting a
+      new
+      benchmark for high-performance inpainting tasks.</p>
+  </div>
+  <div class="content">
+    <h2 style="text-align:center;">Background</h2>
+    <p> Despite the advantage of BrushNet-like models, they still depend on many iterative sampling steps, leading to
+      substantial inference cost in practice. Interestingly, we found that an inpainting adapter trained on a pretrained
+      text-to-image diffusion model can be seamlessly integrated into its corresponding few-step student model without
+      further
+      training, while yielding reasonable quality results (②). This can be attributed to the semantic alignment
+      between the
+      teacher and student models. However, this naive migration approach exhibits quality issues such as color shifts,
+      over-saturation, and loss of details. If we naively train an inpainting
+      adapter and few-step model solely with diffusion loss, the results are blurry and low-quality (③). To address
+      these shortcomings and enhance inpainting performance, we propose <b>TurboFill</b> to train an
+      inpainting adapter
+      directly on top of
+      a pretrained few-step distilled text-to-image model (e.g., DMD2).</p>
+    <br>
+    <img class="summary-img" src="./files/approach.jpg" style="width:100%;"> <br>
+  </div>
+  <div class="content">
+    <h2 style="text-align:center;">Approach</h2>
+    <p> There are three components in TurboFill: the fast generator, the slow generator and the diffusion discriminator.
+      All these
+      three
+      components aim to enhance the adapter’s capability of in- painting masked images. Specifically, the slow generator
+      helps
+      the adapter to denoise the noisy latents towards the most probable direction of realistic image generation. The
+      fast
+      generator enables the adapter to generate a clean image for critique during training. The diffusion
+      discriminator
+      guides the adapter to generate images with better textures, details and content harmonization. Based on these
+      three
+      components, TurboFill follows a 3-step adversarial training scheme. The training alternates between 3 steps
+      throughout
+      the training process.</p>
+    <br>
+    <img class="summary-img" src="./files/method.jpg" style="width:100%;"> <br>
+    <!-- <p>Given ~3-5 images of a subject we fine tune a text-to-image diffusion in two steps: (a) fine tuning the
+      low-resolution text-to-image model with the input images paired with a text prompt containing a unique identifier
+      and the name of the class the subject belongs to (e.g., "A photo of a [T] dog”), in parallel, we apply a
+      class-specific prior preservation loss, which leverages the semantic prior that the model has on the class and
+      encourages it to generate diverse instances belong to the subject's class by injecting the class name in the text
+      prompt (e.g., "A photo of a dog”). (b) fine-tuning the super resolution components with pairs of low-resolution
+      and high-resolution images taken from our input images set, which enables us to maintain high-fidelity to small
+      details of the subject.</p>
+    <br>
+    <img class="summary-img" src="./files/system.png" style="width:100%;"> <br> -->
+  </div>
+  <div class="content">
+    <h2 style="text-align:center;">Results on <b>DilationBench</b> </h2>
+    <img class="summary-img" src="./files/comparison1.jpg" style="width:100%;">
+    <!-- <p>Comparison of previous inpainting methods and BrushNet on <b>DilationBench</b>. Compared to other methods,
+      TurboFill
+      generates
+      more realistic details and textures in just 4 steps, while achieving good scene harmonization. </p> -->
+    <hr style="border: none; border-top: 3px double #333;">
+    <img class="summary-img" src="./files/dilation_comparison1.jpg" style="width:100%;">
+    <p>Comparison of few-step image inpainting methods on <b>DilationBench</b>. Compared to other few-step image
+      inpainting
+      models,
+      TurboFill produces results that align more effectively with the prompt. Furthermore, TurboFill generates more
+      realistic
+      details and textures
+      while achieving effective scene harmonization. </p>
+  </div>
+  <div class="content">
+    <h2 style="text-align:center;">Results on <b>HumanBench</b> </h2>
+    <hr style="border: none; border-top: 3px double #333;">
+    <img class="summary-img" src="./files/human_comparison1.jpg" style="width:100%;">
+    <!-- <p>Comparison of previous inpainting methods and BrushNet on <b>HumanBench</b>. Compared to other methods, TurboFill
+      generates
+      more realistic details and textures in just 4 steps, while achieving good scene harmonization. </p> -->
+    <hr style="border: none; border-top: 3px double #333;">
+    <img class="summary-img" src="./files/human_comparison2.jpg" style="width:100%;">
+    <p>Comparison of previous inpainting methods and BrushNet on <b>HumanBench</b>. Compared to other methods, TurboFill
+      generates
+      more realistic details and textures in just 4 steps, while achieving good scene harmonization. </p>
+  </div>
+  <div class="content">
+    <h2>BibTex</h2>
+    <code> @article{xie2025turbofill,<br>
+  &nbsp;&nbsp;title={TurboFill: Adapting Few-step Text-to-image Model for Fast Image Inpainting},<br>
+  &nbsp;&nbsp;author={Xie, Liangbin and Pakhomov, Daniil and Wang, Zhonghao and Wu, Zongze and Chen, Ziyan <br>&nbsp;&nbsp; and Zhou, Yuqian and Zheng, Haitian and Zhang, Zhifei and Lin, Zhe and Zhou, Jiantao and Dong, Chao},<br>
+  &nbsp;&nbsp;booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},<br>
+  &nbsp;&nbsp;year={2025}<br>
+  } </code>
+  </div>
+  <div class="content" id="acknowledgements">
+    Our project page is borrowed from <a href="https://dreambooth.github.io/">DreamBooth</a>
+    <!-- Recycling a familiar <a href="https://chail.github.io/latent-composition/">template</a> ;). -->
+    </p>
+  </div>
+</body>
+
+</html>
