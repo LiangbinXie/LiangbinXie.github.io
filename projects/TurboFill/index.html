@@ -46,14 +46,14 @@
   </div>
   <div class="content">
     <h2 style="text-align:center;">Abstract</h2>
-    <p>This paper introduces TurboFill, a fast image inpaint- ing model that enhances a few-step text-to-image diffusion
+    <p>This paper introduces TurboFill, a fast image inpainting model that enhances a few-step text-to-image diffusion
       model
       with an inpainting adapter for high-quality and efficient inpainting. While standard diffusion models generate
       high-quality results, they incur high computational costs. We overcome this by training an inpainting adapter on a
       few-step distilled text-to-image model, DMD2, using a novel 3-step adversarial training scheme to ensure
       realistic,
-      structurally consistent, and visually harmonious inpainted regions. To evaluate TurboFill, we propose two bench-
-      marks:
+      structurally consistent, and visually harmonious inpainted regions. To evaluate TurboFill, we propose two
+      benchmarks:
       DilationBench, which tests performance across mask sizes, and HumanBench, based on human feedback for complex
       prompts.
       Experiments show that TurboFill outperforms both multi-step BrushNet and few-step inpainting methods, setting a
@@ -83,7 +83,7 @@
     <p> There are three components in TurboFill: the fast generator, the slow generator and the diffusion discriminator.
       All these
       three
-      components aim to enhance the adapter’s capability of in- painting masked images. Specifically, the slow generator
+      components aim to enhance the adapter’s capability of inpainting masked images. Specifically, the slow generator
       helps
       the adapter to denoise the noisy latents towards the most probable direction of realistic image generation. The
       fast
